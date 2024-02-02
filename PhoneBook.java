@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class PhoneBook{
     public static void main(String[] args) {
         var phBook = new HashMap<String, String>(); // Создаём объект типа HashMap<String, String>
-        //Заносим данные в объекте типа HashMap<String, String>
+        //Заносим данные в объекте типа HashMap<String, String>  (Взял из сети internet)
         phBook.put("+79064106293","Сергей Яковлев");
         phBook.put("+74996775624","Геннадий Шилов");
         phBook.put("+74996720056","Софья Карпова");
@@ -29,6 +29,11 @@ public class PhoneBook{
         phBook.put("+79014992059","Геннадий Шилов");
         phBook.put("+79093869743","Леонида Корнилова");
 
+        var a = get(phBook);
+        //System.out.println(phBook);
+        a.entrySet().stream()
+                .sorted((k1, k2) -> -k1.getValue().compareTo(k2.getValue()))    //Сортируем по убыванию популярности и подсчитываем количество повторений
+                .forEach(k -> System.out.println(k.getKey() + ": " + k.getValue()));    // Выводим на экран
     }
 
     public static HashMap<String, Integer> get(HashMap<String, String> dict){
